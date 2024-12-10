@@ -1,0 +1,107 @@
+/* Login Page Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #f4f4f9;
+}
+
+/* Login Box */
+.login-box {
+    width: 300px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header Styling */
+.login-box h2 {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #608455;  /* Main color for focus effect */
+    outline: none;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #608455; /* Main color for button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #4c6e43; /* Darker shade for hover effect */
+}
+
+/* Message (error or success) */
+.message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #d9534f; /* Red color for errors */
+}
+
+.message.success {
+    color: #28a745; /* Green color for success */
+}
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: red; /* Use green for success messages */
+}
+.register-prompt {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-link {
+    background: none;
+    color: #387d36;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register-link:hover {
+    color: #2e6b2b;
+}
