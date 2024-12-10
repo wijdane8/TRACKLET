@@ -62,6 +62,7 @@
 
 .btn-open-modal:hover {
     background-color: #218838;
+    transition: background-color 0.5s ease;
 }
 /* General Styles */
 body {
@@ -113,6 +114,7 @@ h2, h3 {
     background-color: #f4f7fc;
     font-weight: bold;
     color: #333;
+    transition: background-color 0.5s ease;
 }
 
 .expenses-list tr:hover {
@@ -128,21 +130,31 @@ h2, h3 {
 }
 
 .btn-edit {
-    background-color: #007bff;
-    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #28a745; /* Green color for icons */
+    transition: color 0.3s ease;
 }
 
 .btn-edit:hover {
-    background-color: #0056b3;
+    color: #218838; /* Lighter green on hover */
 }
 
+
 .btn-delete {
-    background-color: #d9534f;
-    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #d9534f; /* Green color for icons */
+    transition: color 0.3s ease;
 }
 
 .btn-delete:hover {
-    background-color: #c9302c;
+
+    color: #c9302c;
 }
 
 .total {
@@ -332,6 +344,7 @@ h2, h3 {
     background-color: #fff;
     cursor: pointer;
     margin: 0 5px;
+    transition: background-color 0.5s ease;
 
     &:hover {
         background-color: #f0f0f0;
@@ -340,12 +353,14 @@ h2, h3 {
     &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        
     }
 
 }
 .pagination button.active-page {
     background-color: #28a745;
     color: #ffffff;
+    
 }
 .page-range {
     font-size: 14px;

@@ -3,6 +3,7 @@ import apiClient from '../api/axios';
 import './css/expenses.css';
 import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, Cell, LabelList } from 'recharts';
 import { Tabs, Tab } from '@mui/material';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 const COLORS =[
@@ -333,8 +334,12 @@ const handleDelete = async (id) => {
                                 <td>{expense.category}</td>
                                 <td>{new Date(expense.date).toLocaleDateString()}</td>
                                 <td>
-                                    <button onClick={() => handleEdit(expense)} className="btn-edit">Edit</button>
-                                    <button onClick={() => handleDelete(expense.id)} className="btn-delete">Delete</button>
+                                <button onClick={() => handleEdit(expense)} className="btn-edit">
+                                <i className="fas fa-edit"></i> {/* Edit icon */}
+                                </button>
+                                <button onClick={() => handleDelete(expense.id)} className="btn-delete">
+                                <i className="fas fa-trash-alt"></i> {/* Delete icon */}
+                                </button>
                                 </td>
                             </tr>
                             ))}
