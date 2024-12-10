@@ -46,8 +46,8 @@
     background-color: #c9302c;
 }
 .add-container{
-    text-align: start;
-    margin-left: 1rem;
+    text-align: end;
+    margin-right: 1rem;
 }
 /* Button for Opening Modal */
 .btn-open-modal {
@@ -81,6 +81,7 @@ body {
     padding: 30px;
     margin-bottom: 6rem;
 }
+
 
 h2, h3 {
     color: #333;
@@ -316,4 +317,116 @@ h2, h3 {
     flex-direction:column;
     justify-content:center;
     align-items: center; 
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+}
+.pagination button.active-page {
+    background-color: #28a745;
+    color: #ffffff;
+}
+.page-range {
+    font-size: 14px;
+    color: #666;
+  }
+  .filter-container {
+    text-align: start;
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.filter-container label {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+
+.filter-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.chart-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    font-size: 1em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+.charts-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align to the top */
+    gap: 20px; /* Space between the charts */
+}
+
+.chart-container {
+    flex: 1; /* Allows equal width for both charts */
+    max-width: 45%; /* Prevents the charts from being too wide */
+    text-align: center;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    .charts-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chart-container {
+        max-width: 100%;
+    }
+}
+/* General Tab Style */
+.MuiTab-root {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: none;
+    color: #333; /* Default text color */
+    border-bottom: 2px solid #d1d1d1 !important;
+    padding: 12px 20px; /* Spacing around the text */
+    border: none; /* Remove default border */
+    border-bottom: 2px solid transparent; /* Invisible border at the bottom */
+    transition: color 0.3s ease, border-color 0.3s ease; /* Smooth transitions for text color and border */
+}
+
+/* Hover Effect */
+.MuiTab-root:hover {
+    color: #28a745; /* Change text color to green on hover */
+    border-bottom: 2px solid #28a745; /* Green line under the tab on hover */
+}
+
+/* Selected Tab */
+.Mui-selected {
+    color: #28a745 !important; /* Green text for the selected tab */
+    border-bottom: 2px solid #28a745 !important; /* Green line under the selected tab */
+}
+
+/* Tabs Indicator (if used) */
+.MuiTabs-indicator {
+    display: none; /* Hide the default indicator */
 }

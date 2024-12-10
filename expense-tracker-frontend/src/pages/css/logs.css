@@ -1,6 +1,7 @@
 .logs-container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 50px auto;
+    margin-bottom: 6rem;
     padding: 20px;
     background-color: #fefefe;
     border: 1px solid #ccc;
@@ -40,4 +41,33 @@
 
 .logs-table td {
     font-size: 14px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+}
+.pagination button.active {
+    background-color: #28a745;
+    color: #ffffff;
 }

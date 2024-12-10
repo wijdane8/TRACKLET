@@ -77,15 +77,22 @@ class ExpenseController extends Controller
      * Delete an expense for the authenticated user
      */
     public function destroy($id)
-    {
-        $expense = Auth::user()->expenses()->findOrFail($id);
-        $expense->delete();
+{
+    // Find the expense by ID
+    $expense = Auth::user()->expenses()->findOrFail($id);
+    
+    // Capture the expense ID before deleting
+    $expenseId = $expense->id;
 
-        // Log the action for delete
-        $this->logAction('delete', "Deleted expense with ID: $id");
+    // Delete the expense
+    $expense->delete();
 
-        return response()->json(['message' => 'Expense deleted successfully'], 200);
-    }
+    // Log the action for delete with the captured expense ID
+    $this->logAction('delete', "Deleted expense with ID: $expenseId");
+
+    return response()->json(['message' => 'Expense deleted successfully'], 200);
+}
+
 
     /**
      * Helper method to log actions related to expenses
