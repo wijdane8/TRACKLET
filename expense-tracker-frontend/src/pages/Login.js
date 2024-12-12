@@ -28,6 +28,7 @@ const Login = () => {
             if (message.toLowerCase().includes('successful')) {
                 // Save token to local storage
                 localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
 
                 // Redirect based on email verification status
                 if (!user.email_verified_at) {

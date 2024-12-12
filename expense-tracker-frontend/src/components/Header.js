@@ -6,12 +6,14 @@ import './css/header.css';  // Import the CSS file
 const Header = () => {
     const navigate = useNavigate();
     const isLoggedIn = !!localStorage.getItem('token');
+    const [user, setUser] = useState(null);  // State to store user data
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const headerRef = useRef(null);
 
     const handleLogout = useCallback(() => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user'); // Also clear user data on logout
         navigate('/Login');
     }, [navigate]);
 
@@ -32,6 +34,15 @@ const Header = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            const storedUser = localStorage.getItem('user');
+            if (storedUser) {
+                setUser(JSON.parse(storedUser)); // Set the user data from localStorage
+            }
+        }
+    }, [isLoggedIn]);
 
     // Handle scroll event
     useEffect(() => {
@@ -66,9 +77,9 @@ const Header = () => {
                         <a href="/contact">Contact Us</a>
                     </li>
                     <li className="navItem">
-                    <a href="/expenses-tracker">
-                                Expenses Tracker
-                            </a>
+                        <a href="/expenses-tracker">
+                            Expenses Tracker
+                        </a>
                     </li>
                     
                     {!isLoggedIn ? (
@@ -84,7 +95,7 @@ const Header = () => {
                 </ul>
             </nav>
 
-            {isLoggedIn && (
+            {isLoggedIn && user && (
                 <div className="profileDropdown" ref={dropdownRef}>
                     <button
                         onClick={toggleDropdown}
@@ -93,14 +104,16 @@ const Header = () => {
                         aria-expanded={isDropdownOpen ? 'true' : 'false'}
                     >
                         <i className="fas fa-user-circle icon"></i>
-                        Profile
                     </button>
 
                     {isDropdownOpen && (
                         <div className="dropdownMenu">
-                            <a href="/profile" className="linkItem">
-                                View Profile
+                            <a href="/user" className="linkItem">
+                            <p style={{ textTransform: 'capitalize' }}>
+                                {user.name ? user.name + '\'s Profile' : 'Profile'}
+                            </p>
                             </a>
+
                             <a href="/all-expenses" className="linkItem">
                                 My Expenses
                             </a>
@@ -115,6 +128,7 @@ const Header = () => {
                     )}
                 </div>
             )}
+
         </header>
     );
 };

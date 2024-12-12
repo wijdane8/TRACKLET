@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\LogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProfileController;
 
 // Authentication routes
 Route::controller(AuthController::class)->group(function () {
@@ -20,6 +21,14 @@ Route::controller(AuthController::class)->group(function () {
         Route::post('/logout', 'logout')->name('api.auth.logout');
     });
 });
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [ProfileController::class, 'show']); // Fetch user info
+    Route::put('/user', [ProfileController::class, 'update']); // Update user info
+    Route::put('/user/password', [ProfileController::class, 'updatePassword']); // Update password
+});
+
 
 // Expense routes
 Route::middleware('auth:sanctum')->controller(ExpenseController::class)->group(function () {
@@ -45,6 +54,9 @@ Route::middleware('auth:sanctum')->controller(AccountController::class)->group(f
     Route::post('/accounts', 'store')->name('api.account.store');
     Route::patch('/accounts/{id}', 'update')->name('api.account.update');
     Route::delete('/accounts/{id}', 'destroy')->name('api.account.destroy');
+    // Route::get('/account-types', [AccountTypeController::class, 'index']);
+    // Route::get('/currencies', [CurrencyController::class, 'index']);
+
 });
 
 
