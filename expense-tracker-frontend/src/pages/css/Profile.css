@@ -70,12 +70,12 @@
     background-color: #d32f2f;
   }
   
-  .btn-edit {
+  .bttn-edit {
     background-color: #008CBA; /* Blue button */
     color: white;
   }
   
-  .btn-edit:hover {
+  .bttn-edit:hover {
     background-color: #007bb5;
   }
   

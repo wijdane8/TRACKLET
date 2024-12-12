@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\LogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\IncomeController;
 
 // Authentication routes
 Route::controller(AuthController::class)->group(function () {
@@ -21,6 +22,19 @@ Route::controller(AuthController::class)->group(function () {
         Route::post('/logout', 'logout')->name('api.auth.logout');
     });
 });
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('incomes')->group(function() {
+        Route::post('/', [IncomeController::class, 'store']); // Create an income
+        Route::get('/{userId}', [IncomeController::class, 'index']); // Get incomes for a user
+        Route::put('/{id}', [IncomeController::class, 'update']); // Update an income
+        Route::delete('/{id}', [IncomeController::class, 'destroy']); // Delete an income
+    });
+});
+Route::get('/finance/overview/{userId}', [FinanceController::class, 'overview']);
+
+
 
 
 Route::middleware('auth:sanctum')->group(function () {

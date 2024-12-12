@@ -134,7 +134,7 @@ const ProfilePage = () => {
       <div className="profile-details">
         <p><strong>Name:</strong> {user.name}</p>
         <p><strong>Email:</strong> {user.email}</p>
-        <button className="btn-edit" onClick={handleEditToggle}>Edit Info</button>
+        <button className="bttn-edit" onClick={handleEditToggle}>Edit Info</button>
       </div>
     )}
   </div>
@@ -177,7 +177,7 @@ const ProfilePage = () => {
         <button type="button" className="btn-cancel" onClick={handlePasswordResetToggle}>Cancel</button>
       </form>
     ) : (
-      <button className="btn-edit" onClick={handlePasswordResetToggle}>Change Password</button>
+      <button className="bttn-edit" onClick={handlePasswordResetToggle}>Change Password</button>
     )}
   </div>
 
