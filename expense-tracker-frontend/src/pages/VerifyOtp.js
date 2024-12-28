@@ -17,7 +17,7 @@ const VerifyOtp = () => {
         }
 
         try {
-            const response = await apiClient.post(
+             await apiClient.post(
                 '/verify',
                 { otp },
                 {

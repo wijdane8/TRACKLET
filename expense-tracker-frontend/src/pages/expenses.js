@@ -71,7 +71,7 @@ const Expenses = () => {
             const response = await apiClient.get('/all-expenses', {
                 headers: { Authorization: `Bearer ${token}` },
             });
-    
+            console.log("API Response:", response.data);
             if (response.data && response.data.data) {
                 const expensesData = response.data.data;
     

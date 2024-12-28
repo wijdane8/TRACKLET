@@ -14,6 +14,7 @@ const Logs = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  
   const calculateStartIndex = (currentPage, pageSize) => {
     return (currentPage - 1) * pageSize;
   };
@@ -35,12 +36,6 @@ const Logs = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          params: {
-            // Add pagination parameters here if supported by your API
-            // For example:
-            // page: currentPage,
-            // limit: pageSize
-          },
         });
 
         setLogs(response.data || []);
@@ -54,7 +49,7 @@ const Logs = () => {
     };
 
     fetchLogs();
-  }, [currentPage, pageSize]); // Re-run useEffect when currentPage changes
+  }, [currentPage, pageSize]);
 
   const startIndex = calculateStartIndex(currentPage, pageSize);
 
@@ -79,28 +74,34 @@ const Logs = () => {
               <th>User</th>
               <th>Action</th>
               <th>Description</th>
-              <th>Expense</th>
+              <th>Details</th>
               <th>IP Address</th>
               <th>Timestamp</th>
             </tr>
           </thead>
           <tbody>
-            {logs.slice(startIndex, startIndex + pageSize).map((log) => (
-              <tr key={log.id}>
-                <td>{log.id}</td>
-                <td>{log.user?.name || 'Unknown User'}</td>
-                <td>{log.action_type}</td>
-                <td>{log.description}</td>
-                <td>{log.expense?.description || '--'}</td>
-                <td>{log.ip_address || 'N/A'}</td>
-                <td>{new Date(log.timestamp).toLocaleString()}</td>
-              </tr>
-            ))}
-          </tbody>
+          {logs.slice(startIndex, startIndex + pageSize).map((log) => (
+            <tr key={log.id}>
+              <td>{log.id}</td>
+              <td>{log.user?.name || 'Unknown User'}</td>
+              <td>{log.action_type}</td>
+              <td>{log.description}</td>
+              <td>
+                {log.expense 
+                  ? log.expense.description // Display expense description
+                  : log.income 
+                  ? log.income.description // Display income description
+                  : '--'}
+              </td>
+              <td>{log.ip_address || 'N/A'}</td>
+              <td>{new Date(log.timestamp).toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
         </table>
       )}
 
-      {/* Pagination buttons (Optional) */}
+      {/* Pagination buttons */}
       {logs.length > pageSize && (
         <div className="pagination">
           <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>

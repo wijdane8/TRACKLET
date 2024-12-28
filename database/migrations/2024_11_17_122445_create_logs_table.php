@@ -19,6 +19,7 @@ class CreateLogsTable extends Migration
             $table->timestamp('timestamp')->useCurrent(); // Defaults to current timestamp
             $table->timestamps(); // Laravel's created_at and updated_at fields
         });
+        
     }
 
     public function down()

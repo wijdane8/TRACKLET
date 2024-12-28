@@ -9,6 +9,8 @@ import Expenses from './pages/expenses';
 import Home from './pages/Home';  
 import Logs from './pages/logs';
 import ProfilePage from './pages/Profile';
+import Income from './pages/income';
+import Dashboard from './pages/dashboard';
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/all-expenses" element={<Expenses />} />
           <Route path="/logs" element={<Logs />} />
           <Route path="/user" element={<ProfilePage />} />
+          <Route path="/incomes" element={<Income />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       

@@ -14,14 +14,17 @@ class ExpenseController extends Controller
      * Get all expenses for the authenticated user
      */
     public function index()
-    {
-        $expenses = Auth::user()->expenses()->latest()->get();
+{
+    $expenses = Auth::user()->expenses()->latest()->get();
+    $totalExpense = $expenses->sum('amount'); // Calculate total expense
 
-        return response()->json([
-            'message' => 'Expenses retrieved successfully',
-            'data' => $expenses,
-        ], 200);
-    }
+    return response()->json([
+        'message' => 'Expenses retrieved successfully',
+        'data' => $expenses,
+        'total_expense' => $totalExpense,
+    ], 200);
+}
+
 
     /**
      * Get a specific expense for the authenticated user

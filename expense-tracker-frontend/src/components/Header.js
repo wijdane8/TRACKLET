@@ -113,12 +113,17 @@ const Header = () => {
                                 {user.name ? user.name + '\'s Profile' : 'Profile'}
                             </p>
                             </a>
-
+                            <a href="/dashboard" className="linkItem">
+                                Dashboard
+                            </a>
                             <a href="/all-expenses" className="linkItem">
                                 My Expenses
                             </a>
                             <a href="/logs" className="linkItem">
                                 Logs
+                            </a>
+                            <a href="/incomes" className="linkItem">
+                                Incomes
                             </a>
                             <button onClick={handleLogout} className="logoutButton">
                                 <i className="fas fa-sign-out-alt icon"></i>

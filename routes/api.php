@@ -8,6 +8,7 @@ use App\Http\Controllers\LogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\IncomeController;
+use App\Http\Controllers\Api\DashoardIEController;
 
 // Authentication routes
 Route::controller(AuthController::class)->group(function () {
@@ -32,10 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/{id}', [IncomeController::class, 'destroy']); // Delete an income
     });
 });
-Route::get('/finance/overview/{userId}', [FinanceController::class, 'overview']);
-
-
-
+Route::middleware('auth:sanctum')->get('/all-expenses-and-income', [DashoardIEController::class, 'overview']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [ProfileController::class, 'show']); // Fetch user info
